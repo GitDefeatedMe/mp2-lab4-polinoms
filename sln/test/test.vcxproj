@@ -147,8 +147,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\test\polinom_test.cpp" />
     <ClCompile Include="..\..\test\test_main.cpp" />
-    <ClCompile Include="polinom_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\gtest\gtest.h" />
