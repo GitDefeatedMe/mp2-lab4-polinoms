@@ -145,15 +145,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main_polinoms.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\polinoms.vcxproj">
       <Project>{c9e61f7d-43d1-4ab9-8490-c42e46e03048}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\polinom.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\samples\main_polinoms.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

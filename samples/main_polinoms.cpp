@@ -40,7 +40,7 @@ int main()
 
 	std::cout << "\n\npolynom 1 : " << p1 << "polynom 2 : " << p2;
 
-	std::cout << "\n\n\select the operation : \n\t1 - addition  \n\t2 - subtraction \n\t3 - multiplication\n";
+	std::cout << "\n\nselect the operation : \n\t1 - addition  \n\t2 - subtraction \n\t3 - multiplication\n";
 	int select = 0;
 	do
 	{
