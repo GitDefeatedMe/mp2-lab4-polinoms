@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-void input_polinom(int n, polinom& p)
+void input_polinom(int n, PolynomList& p)
 {
 	int i = 0;
 	while (i < n)
@@ -26,7 +26,7 @@ void input_polinom(int n, polinom& p)
 int main()
 {
 	int n1, n2;
-	polinom p1, p2;
+	PolynomList p1, p2;
 	std::cout << "enter the number of monomials in the first polynomial : ";
 	std::cin >> n1;
 	std::cout << "enter monomials in the form of 2 numbers corresponding to the coefficient and degree, for example, the monomial 3.4*x^1*y^2*z^3 correspond to 3.4 123\n";
@@ -38,7 +38,7 @@ int main()
 	input_polinom(n2, p2);
 
 
-	std::cout << "\n\npolynom 1 : " << p1 << "polynom 2 : " << p2;
+	std::cout << "\n\npolynom 1 : " << p1 << "\tpolynom 2 : " << p2;
 
 	std::cout << "\n\nselect the operation : \n\t1 - addition  \n\t2 - subtraction \n\t3 - multiplication\n";
 	int select = 0;
@@ -47,7 +47,7 @@ int main()
 		std::cin >> select;
 	} while (select <= 0 || select > 3);
 	
-	polinom res;
+	PolynomList res;
 	switch (select)
 	{
 	case 1:

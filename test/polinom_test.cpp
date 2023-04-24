@@ -52,22 +52,21 @@ TEST(monom, can_multøply_monom_by_number)
 
 TEST(List, can_create_list)
 {
-	ASSERT_NO_THROW(List list);
-	List list1;
-	ASSERT_NO_THROW(List list2(list1));
+	ASSERT_NO_THROW(List<monom> list);
+	List<monom> list1;
+	ASSERT_NO_THROW(List<monom> list2(list1));
 }
 
 TEST(List, can_push_monom)
 {
-	List list;
+	List<monom> list;
 	monom m(1, 100);
 	ASSERT_NO_THROW(list.Push(m));
-	ASSERT_NO_THROW(list.Push(1, 100));
 }
 
 TEST(List, can_cout_list)
 {
-	List list;
+	List<monom> list;
 	monom m(1, 100);
 	list.Push(m);
 	ASSERT_NO_THROW(std::cout << list);
@@ -75,7 +74,7 @@ TEST(List, can_cout_list)
 
 TEST(List, can_be_equated)
 {
-	List list, list1;
+	List<monom> list, list1;
 	monom m(1, 100);
 	list.Push(m);
 	ASSERT_NO_THROW(list1 = list);
@@ -86,43 +85,41 @@ TEST(List, can_be_equated)
 
 TEST(polinom, can_create_polinom)
 {
-	ASSERT_NO_THROW(polinom pol);
-	polinom pol1;
-	ASSERT_NO_THROW(polinom pol2(pol1));
-	List list;
-	ASSERT_NO_THROW(polinom pol3(list));
+	ASSERT_NO_THROW(PolynomList pol);
+	PolynomList pol1;
+	ASSERT_NO_THROW(PolynomList pol2(pol1));
 }
 
 TEST(polinom, can_be_equated)
 {
-	polinom p1;
-	ASSERT_NO_THROW(polinom p2 = p1);
+	PolynomList p1;
+	ASSERT_NO_THROW(PolynomList p2 = p1);
 }
 
 TEST(polinom, can_add_monom)
 {
-	polinom p1; monom m(1, 100);
+	PolynomList p1; monom m(1, 100);
 	ASSERT_NO_THROW(p1.add(m));
 	ASSERT_NO_THROW(p1.add(1, 123));
 }
 
 TEST(polinom, can_subtract_polynoms)
 {
-	polinom p1; polinom p2;
+	PolynomList p1; PolynomList p2;
 	p1.add(1, 123); p2.add(1, 123);
 	ASSERT_NO_THROW(p1 - p2);
 }
 
 TEST(polinom, can_multøply_polynoms_by_number)
 {
-	polinom p1;
+	PolynomList p1;
 	p1.add(1, 123); p1.add(1, 323);
 	ASSERT_NO_THROW(p1 * 2);
 }
 
 TEST(polinom, can_multøply_polynoms_by_polynom)
 {
-	polinom p1; polinom p2;
+	PolynomList p1; PolynomList p2;
 	p1.add(1, 123); p2.add(1, 123);
 	ASSERT_NO_THROW(p1 * p2);
 }
