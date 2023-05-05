@@ -16,13 +16,15 @@ struct monom
 
 
 	monom() { degree = 0; k = 0; };
-	monom(double k, int pow) { 
-		this->k = k, degree = pow; 
+	monom(double k, int pow) {
+		this->k = k, degree = pow;
 		if (degree >= 1000 || degree < 0)
 			throw std::exception("incorrect degree\n");
 	};
-
-	bool operator>(const monom& right) { return real_degree(degree) > real_degree(right.degree);};
+	monom(monom& m) {
+		this->k = m.k, degree = m.degree;
+	};
+	bool operator>(const monom& right) { return real_degree(degree) > real_degree(right.degree); };
 	bool operator<(const monom& right) { return real_degree(degree) < real_degree(right.degree); };
 	bool operator==(const monom& right) { return degree == right.degree; };
 	const monom& operator=(const monom& m) { this->k = m.k; this->degree = m.degree; return *this; };
@@ -36,7 +38,7 @@ struct monom
 	};
 
 	monom operator*(double a) { monom rMonom; rMonom.degree = degree; rMonom.k = k * a; return rMonom; };
-	friend std::ostream& operator<<(std::ostream& os, const monom& m){
+	friend std::ostream& operator<<(std::ostream& os, const monom& m) {
 		int x = m.degree / 100;
 		int y = m.degree % 100 / 10;
 		int z = m.degree % 10;
@@ -85,7 +87,7 @@ public:
 
 
 
-	List() 
+	List()
 	{
 		Node* A = new Node();
 		head = A;
@@ -135,7 +137,7 @@ public:
 				tmp = tmp->next;
 			}
 		}
-		
+
 	}
 
 	void Push(T& m)
@@ -151,6 +153,7 @@ public:
 		{
 			Node* A = new Node(m);
 			position->next = A;
+			position->next->next = nullptr;
 		}
 		else
 		{
@@ -218,7 +221,7 @@ class PolynomList : private List<monom>
 	using List<monom>::Node;
 public:
 	PolynomList() :List<monom>() {};
-	PolynomList(const PolynomList& right) :List<monom>() 
+	PolynomList(const PolynomList& right) :List<monom>()
 	{
 		if (right.head->next != nullptr)
 		{
@@ -232,6 +235,7 @@ public:
 				pos = pos->next;
 				tmp = tmp->next;
 			}
+			pos->next = nullptr;
 		}
 	};
 

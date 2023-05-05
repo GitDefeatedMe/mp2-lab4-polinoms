@@ -58,7 +58,6 @@ PolynomList PolynomList::operator +(PolynomList& right)
 	Node* left = head->next;
 	Node* right_ = right.head->next;
 
-
 	while (left != nullptr && right_ != nullptr)
 	{
 		if (left->data > right_->data) // real degree
@@ -67,9 +66,9 @@ PolynomList PolynomList::operator +(PolynomList& right)
 			{
 				List<monom>::Node* A = new List<monom>::Node(right_->data);
 				pos->next = A;
-				pos++;
+				pos = pos->next;
 			}
-			right_++;
+			right_ = right_->next;
 		}
 		else if (left->data < right_->data) // real degree
 		{
@@ -77,7 +76,7 @@ PolynomList PolynomList::operator +(PolynomList& right)
 			{
 				List<monom>::Node* A = new List<monom>::Node(left->data);
 				pos->next = A;
-				pos++;
+				pos = pos->next;
 			}
 			left = left->next;
 		}
@@ -85,8 +84,7 @@ PolynomList PolynomList::operator +(PolynomList& right)
 		{
 			if (left->data.k + right_->data.k != 0)
 			{
-				monom sum = left->data;
-				sum += right_->data;
+				monom sum(left->data.k + right_->data.k, right_->data.degree);
 				List<monom>::Node* A = new List<monom>::Node(sum);
 				pos->next = A;
 				pos = pos->next;
@@ -114,6 +112,7 @@ PolynomList PolynomList::operator +(PolynomList& right)
 			left = left->next;
 		}
 	}
+
 	if (left == nullptr)
 	{
 		while (right_ != nullptr)
@@ -135,7 +134,6 @@ PolynomList PolynomList::operator +(PolynomList& right)
 		}
 	}
 	pos->next = nullptr;
-
 	return retPolynom;
 }
 
@@ -149,7 +147,6 @@ PolynomList PolynomList::operator *(double a)
 		pos->data.k *= a;
 		pos = pos->next;
 	}
-
 	return returnPolinom;
 }
 
